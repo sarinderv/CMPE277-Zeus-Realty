@@ -1,3 +1,7 @@
 # CMPE277-Zeus-Realty
 
-TODO - include link to Project Proposal
+Team Members:
+- Aishwarya Ravi
+- Dharahasini Gangalapudi
+- Sarinder Virk
+- Varun Alla
