@@ -93,13 +93,15 @@ public class MapFragment extends Fragment  implements LocationListener {
             //longitudeField.setText("Location not available");
         }
     }
+    @SuppressLint("MissingPermission")
     @Override
     public void onLocationChanged(@NonNull Location location) {
         if(googleMap!=null){
+            googleMap.setMyLocationEnabled(true);
             LatLng sydney = new LatLng(location.getLatitude(), location.getLongitude());
             /*   googleMap.addMarker(new MarkerOptions().position(sydney).title("Title").snippet("Marker Description"));
              */ // For zooming functionality
-            CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(15).build();
             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
     }
