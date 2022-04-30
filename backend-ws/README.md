@@ -2,6 +2,12 @@
 
 A real estate 'listings' REST API using Node.js and PostgreSQL. Built with Express Js for this [Node.js PostgreSQL tutorial](https://geshan.com.np/blog/2021/01/nodejs-postgresql-tutorial/).
 
+## Build
+```npm i```
+
+## Run
+```npm start```
+
 ## Deploy with Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sarinderv/CMPE277-Zeus-Realty/edit/master/backend-ws/tree/master)
