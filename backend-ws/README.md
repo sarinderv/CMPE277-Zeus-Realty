@@ -18,6 +18,6 @@ A real estate 'listings' REST API using Node.js and PostgreSQL. Built with Expre
 
 ### Running on Vercel
 
-At: [https://zeus-realty-nodejs.vercel.app/listings](https://zeus-realty-nodejs.vercel.app/listings)
+At: https://zeus-realty-nodejs.vercel.app
 
-
+REST API: [https://zeus-realty-nodejs.vercel.app/listings](https://zeus-realty-nodejs.vercel.app/listings)
