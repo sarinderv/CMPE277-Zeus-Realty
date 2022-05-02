@@ -14,4 +14,9 @@
     <string name="title_home">Home</string>
     <string name="title_map">Map</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_nfc">Tap for Brochure</string>
+    <string name="tag_written_toast">Tag Written!</string>
+    <string name="cancel">Cancel</string>
+    <string name="wait_write_dialog_title">Write NFC tag</string>
+    <string name="wait_write_dialog_text">Write NFC tag</string>
 </resources>
