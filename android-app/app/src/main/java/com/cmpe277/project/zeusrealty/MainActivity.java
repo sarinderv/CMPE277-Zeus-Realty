@@ -11,6 +11,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -51,8 +54,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }, intentFilter);
         isLocationPermissionGranted();
+        hideFragment();
 
 
+    }
+    public void hideFragment(){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        Fragment dFragment = manager.findFragmentById(R.id.card_fragment);
+        ft.hide(dFragment);
+        ft.commit();
+    }
+    public void showMessageInfo(String text){
+        System.out.println(text);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        Fragment dFragment = manager.findFragmentById(R.id.card_fragment);
+        ft.show(dFragment);
+        ft.commit();
     }
 
     private boolean isLocationPermissionGranted() {
