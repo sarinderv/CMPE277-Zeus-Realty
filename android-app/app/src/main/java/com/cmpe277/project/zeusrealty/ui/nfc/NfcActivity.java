@@ -1,51 +1,59 @@
 package com.cmpe277.project.zeusrealty.ui.nfc;
 
 import android.content.Intent;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cmpe277.project.zeusrealty.R;
 
-import java.util.Date;
-
 import pillownfc.PillowNfcManager;
-import pillownfc.util.WriteTagHelper;
 
 public class NfcActivity extends AppCompatActivity {
-    PillowNfcManager nfcManager;
-    WriteTagHelper writeHelper;
+    private PillowNfcManager nfcManager;
+    private TextView textNfc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_nfc);
+        Button writeButton = findViewById(R.id.write_button);
+        writeButton.setVisibility(View.GONE); // hide Write button for intent-driven NFC activity
+        textNfc = findViewById(R.id.text_nfc);
 
         nfcManager = new PillowNfcManager(this);
         nfcManager.onActivityCreate();
-        nfcManager.setOnTagReadListener(new PillowNfcManager.TagReadListener() {
-            @Override
-            public void onTagRead(String tagRead) {
-                Toast.makeText(NfcActivity.this, "tag read:"+tagRead, Toast.LENGTH_LONG).show();
-            }
-        });
+        nfcManager.setOnTagReadListener(tagRead -> textNfc.setText(tagRead));
 
-        writeHelper= new WriteTagHelper(this, nfcManager);
-        nfcManager.setOnTagWriteErrorListener(writeHelper);
-        nfcManager.setOnTagWriteListener(writeHelper);
+        setTextNfcMsgFromIntent(getIntent());
+    }
 
-        Button writeButton = (Button) findViewById(R.id.write_button);
-        writeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = new Date().toString();
-                text += "\n yo! Breath of The Wild!!!";
-                writeHelper.writeText(text);
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        nfcManager.onActivityNewIntent(intent);
+        setTextNfcMsgFromIntent(intent);
+    }
+
+    private void setTextNfcMsgFromIntent(Intent intent) {
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+            Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+            if (rawMsgs == null) {
+                textNfc.setText("empty NFC");
             }
-        });
+            else {
+                NdefRecord[] records = ((NdefMessage) rawMsgs[0]).getRecords();
+                String text = nfcManager.ndefRecordToString(records[0]);
+                textNfc.setText(text);
+            }
+        }
     }
 
     @Override
@@ -58,10 +66,5 @@ public class NfcActivity extends AppCompatActivity {
     protected void onPause() {
         nfcManager.onActivityPause();
         super.onPause();
-    }
-
-    @Override
-    public void onNewIntent(Intent intent){
-        nfcManager.onActivityNewIntent(intent);
     }
 }
