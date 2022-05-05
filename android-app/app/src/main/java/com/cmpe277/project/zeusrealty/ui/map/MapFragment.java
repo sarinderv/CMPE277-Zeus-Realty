@@ -71,6 +71,14 @@ public class MapFragment extends Fragment  implements LocationListener {
                         MapStyleOptions.loadRawResourceStyle(
                                 getActivity().getApplicationContext(), R.raw.style_json));
                 setupLocation();
+                googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+                    @Override
+                    public void onCameraIdle() {
+                        LatLng myLocation = googleMap.getCameraPosition().target;
+                        createMarkers(myLocation);
+                    }
+                });
+
              }
         });
 
@@ -144,14 +152,14 @@ public class MapFragment extends Fragment  implements LocationListener {
 
             CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(15).build();
             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            createMarkers(myLocation);
 
 
         }
     }
     public void createMarkers(LatLng myLocation){
+        //fetch markers around my location and put them on map
+       LatLng currentLoc= googleMap.getCameraPosition().target;
         googleMap.addMarker(new MarkerOptions()
                 .position(myLocation).title("Home"));
-
     }
 }
