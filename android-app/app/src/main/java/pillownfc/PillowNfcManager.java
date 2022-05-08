@@ -34,7 +34,7 @@ public class PillowNfcManager {
 	TagWriteListener onTagWriteListener;
 	TagWriteErrorListener onTagWriteErrorListener;
 
-	String writeText = null;
+	static String writeText = null;
 
 	
 	public PillowNfcManager(Activity activity) {
@@ -112,8 +112,9 @@ public class PillowNfcManager {
 	/**
 	 * To be executed on onNewIntent of activity
 	 * @param intent
+	 * @return
 	 */
-	public void onActivityNewIntent(Intent intent) {
+	public boolean onActivityNewIntent(Intent intent) {
 		// TODO Check if the following line has any use 
 		// activity.setIntent(intent);
 		if (writeText == null)
@@ -124,11 +125,14 @@ public class PillowNfcManager {
 				writeTag(activity, tag, writeText);
 				onTagWriteListener.onTagWritten();
 			} catch (NFCWriteException exception) {
+				exception.printStackTrace();
 				onTagWriteErrorListener.onTagWriteError(exception);
 			} finally {
 				writeText = null;
 			}
+			return true;
 		}
+		return false;
 	}
 
 	/**

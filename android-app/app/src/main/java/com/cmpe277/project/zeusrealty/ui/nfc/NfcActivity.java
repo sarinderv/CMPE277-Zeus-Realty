@@ -1,5 +1,7 @@
 package com.cmpe277.project.zeusrealty.ui.nfc;
 
+import static com.cmpe277.project.zeusrealty.ui.nfc.NfcFragment.INTENT_MSG;
+
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cmpe277.project.zeusrealty.R;
 
 import pillownfc.PillowNfcManager;
+import pillownfc.util.WriteTagHelper;
 
 public class NfcActivity extends AppCompatActivity {
     private PillowNfcManager nfcManager;
@@ -22,6 +25,9 @@ public class NfcActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        // check if we are in the process of writing a Tag
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_nfc);
         Button writeButton = findViewById(R.id.write_button);
@@ -31,15 +37,28 @@ public class NfcActivity extends AppCompatActivity {
         nfcManager = new PillowNfcManager(this);
         nfcManager.onActivityCreate();
         nfcManager.setOnTagReadListener(tagRead -> textNfc.setText(tagRead));
+        WriteTagHelper writeHelper = new WriteTagHelper(this, nfcManager);
+        nfcManager.setOnTagWriteErrorListener(writeHelper);
+        nfcManager.setOnTagWriteListener(writeHelper);
 
-        setTextNfcMsgFromIntent(getIntent());
+        if (intent.getAction() == null)
+            intent = intent.getParcelableExtra(INTENT_MSG);
+
+        boolean writeOp = nfcManager.onActivityNewIntent(intent);
+        if (writeOp)
+            textNfc.setText("Successfully wrote tag");
+        else
+            setTextNfcMsgFromIntent(intent);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        nfcManager.onActivityNewIntent(intent);
-        setTextNfcMsgFromIntent(intent);
+        boolean writeOp = nfcManager.onActivityNewIntent(intent);
+        if (writeOp)
+            textNfc.setText("Successfully wrote tag");
+        else
+            setTextNfcMsgFromIntent(intent);
     }
 
     private void setTextNfcMsgFromIntent(Intent intent) {

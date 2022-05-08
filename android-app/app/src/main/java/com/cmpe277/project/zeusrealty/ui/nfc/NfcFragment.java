@@ -1,8 +1,5 @@
 package com.cmpe277.project.zeusrealty.ui.nfc;
 
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +24,18 @@ public class NfcFragment extends Fragment {
     WriteTagHelper writeHelper;
 
     private FragmentNfcBinding binding;
-    private NfcAdapter mAdapter;
-    private PendingIntent pendingIntent;
 
+    public static final String INTENT_MSG = "com.cmpe277.project.zeusrealty.ui.nfc.MESSAGE";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            String key = getArguments().getString("key");
+        }
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         NfcViewModel nfcViewModel =
@@ -37,10 +43,6 @@ public class NfcFragment extends Fragment {
 
         binding = FragmentNfcBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        mAdapter = NfcAdapter.getDefaultAdapter(getContext());
-        pendingIntent = PendingIntent.getActivity(
-                getContext(), 0, new Intent(getContext(), getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
 
         final TextView textView = binding.textNfc;
         nfcViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -56,8 +58,7 @@ public class NfcFragment extends Fragment {
 
         Button writeButton = binding.writeButton;
         writeButton.setOnClickListener(v -> {
-            String text = new Date().toString();
-            text += "\n NFC tag for Zeus Realty";
+            String text = binding.textInput.getText().toString();
             writeHelper.writeText(text);
         });
         return root;
@@ -71,13 +72,13 @@ public class NfcFragment extends Fragment {
 
     @Override
     public void onResume() {
-        mAdapter.enableForegroundDispatch(getActivity(), pendingIntent, null, null);
         super.onResume();
+        nfcManager.onActivityResume();
     }
 
     @Override
     public void onPause() {
-        mAdapter.disableForegroundDispatch(getActivity());
+        nfcManager.onActivityPause();
         super.onPause();
     }
 }

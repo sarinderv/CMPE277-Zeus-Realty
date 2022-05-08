@@ -1,12 +1,17 @@
 package com.cmpe277.project.zeusrealty;
 
+import static com.cmpe277.project.zeusrealty.ui.nfc.NfcFragment.INTENT_MSG;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 
+import com.cmpe277.project.zeusrealty.ui.nfc.NfcActivity;
+import com.cmpe277.project.zeusrealty.ui.nfc.NfcFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,4 +96,15 @@ public class MainActivity extends AppCompatActivity {
             return  true;
         }
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equalsIgnoreCase(intent.getAction())) {
+            Intent nfcIntent = new Intent(this, NfcActivity.class);
+            nfcIntent.putExtra(INTENT_MSG, intent);
+            startActivity(nfcIntent);
+        }
+    }
+
 }
