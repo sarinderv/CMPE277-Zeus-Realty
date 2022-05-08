@@ -23,4 +23,26 @@
     <dimen name="item_row_imageview_widthHeight">80dp</dimen>
     <dimen name="item_row_img_marginRight">8dp</dimen>
 
+    <!-- content_produit_detail.xml -->
+    <!-- map fragment -->
+    <dimen name="produit_detail_mapHeight">250dip</dimen>
+    <dimen name="produit_detail_mapMargin">10dp</dimen>
+    <!-- margin tops -->
+    <dimen name="produit_detail_marginTop_big_space">15dp</dimen>
+    <dimen name="produit_detail_marginTop_small_space">5dp</dimen>
+    <dimen name="produit_detail_marginTop_detailFields">3dp</dimen>
+    <!-- text sizes -->
+    <dimen name="produit_detail_txtSizePriceArea">16sp</dimen>
+    <dimen name="produit_detail_txtTitleMain">20sp</dimen>
+    <!-- buttons -->
+    <dimen name="produit_detail_btn_favorite">39dp</dimen>
+    <dimen name="produit_detail_btn_marginRight">20dp</dimen>
+    <dimen name="produit_detail_btn_txtSize">13dp</dimen>
+    <!-- view black lines -->
+    <dimen name="produit_detail_blackLineView_height">1dp</dimen>
+    <!-- image showcase -->
+    <dimen name="produit_detail_imageview_height">130dp</dimen>
+    <dimen name="produit_detail_imageview_width">150dp</dimen>
+    <dimen name="produit_detail_recyclerview_height">60dp</dimen>
+    <dimen name="produit_detail_recyclerview_margin">5dp</dimen>
 </resources>

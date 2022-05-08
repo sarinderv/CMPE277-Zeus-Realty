@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         ArrayList<String> listProperty = new ArrayList<>();
         ListView lv = (ListView)root.findViewById(R.id.propertyList);
@@ -40,6 +39,7 @@ public class HomeFragment extends Fragment {
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,listProperty);
         lv.setAdapter(arrayAdapter);
 
+        //View root = binding.getRoot();
 
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
