@@ -20,4 +20,9 @@
     <string name="cancel">Cancel</string>
     <string name="wait_write_dialog_title">Write NFC tag</string>
     <string name="wait_write_dialog_text">Write NFC tag</string>
+    <string name="area_filter">Area</string>
+    <string name="date_filter">Date</string>
+    <string name="price_filter">Price</string>
+    <string name="search_button">Search</string>
+    <string name="search_loc_text">Enter Location</string>
 </resources>
