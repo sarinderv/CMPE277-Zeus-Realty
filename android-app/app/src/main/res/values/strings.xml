@@ -50,4 +50,5 @@
     <string name="content_produit_detail_email_body_area">- Area: </string>
     <string name="content_produit_detail_email_body_price">- Price: </string>
     <string name="content_produit_detail_email_body_reference">- Reference: </string>
+    <string name="produit_area_not_available">On demand</string>
 </resources>

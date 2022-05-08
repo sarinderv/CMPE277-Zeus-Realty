@@ -40,6 +40,7 @@
         android:textColor="#343232"
         android:textSize="@dimen/item_row_txtSize_shortDescription" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,5 +71,23 @@
             android:textSize="@dimen/item_row_txtSize_price"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/aboutTxt"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/iconImg"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/detailsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
