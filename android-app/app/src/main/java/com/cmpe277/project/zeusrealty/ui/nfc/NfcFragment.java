@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,8 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.cmpe277.project.zeusrealty.databinding.FragmentNfcBinding;
-
-import java.util.Date;
 
 import pillownfc.PillowNfcManager;
 import pillownfc.util.WriteTagHelper;
@@ -45,6 +44,7 @@ public class NfcFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textNfc;
+        final CheckBox url = binding.isUrl;
         nfcViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         nfcManager = new PillowNfcManager(getActivity());
@@ -59,7 +59,7 @@ public class NfcFragment extends Fragment {
         Button writeButton = binding.writeButton;
         writeButton.setOnClickListener(v -> {
             String text = binding.textInput.getText().toString();
-            writeHelper.writeText(text);
+            writeHelper.writeText(text, url.isChecked());
         });
         return root;
     }

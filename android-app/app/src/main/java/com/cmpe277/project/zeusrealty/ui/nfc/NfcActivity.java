@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,8 +31,11 @@ public class NfcActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_nfc);
+        // hide Write button and checkbox for intent-driven NFC activity
         Button writeButton = findViewById(R.id.write_button);
-        writeButton.setVisibility(View.GONE); // hide Write button for intent-driven NFC activity
+        writeButton.setVisibility(View.GONE);
+        CheckBox isUrl = findViewById(R.id.is_url);
+        isUrl.setVisibility(View.GONE);
         textNfc = findViewById(R.id.text_nfc);
 
         nfcManager = new PillowNfcManager(this);
@@ -46,7 +50,7 @@ public class NfcActivity extends AppCompatActivity {
 
         boolean writeOp = nfcManager.onActivityNewIntent(intent);
         if (writeOp)
-            textNfc.setText("Successfully wrote tag");
+            textNfc.setText("Wrote tag");
         else
             setTextNfcMsgFromIntent(intent);
     }
@@ -56,7 +60,7 @@ public class NfcActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         boolean writeOp = nfcManager.onActivityNewIntent(intent);
         if (writeOp)
-            textNfc.setText("Successfully wrote tag");
+            textNfc.setText("Wrote tag");
         else
             setTextNfcMsgFromIntent(intent);
     }

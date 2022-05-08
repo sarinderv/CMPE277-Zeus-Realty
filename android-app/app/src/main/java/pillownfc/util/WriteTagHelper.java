@@ -32,10 +32,10 @@ public class WriteTagHelper implements PillowNfcManager.TagWriteErrorListener, P
 	 * Write the given text to a tag.
 	 * @param text
 	 */
-	public void writeText(String text){
+	public void writeText(String text, boolean isUrl){
 		dialog = createWaitingDialog();
 		dialog.show();
-		nfcManager.writeText(text);
+		nfcManager.writeText(text, isUrl);
 	}
 	
 	public void setDialogViewId(int dialogViewId) {

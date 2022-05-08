@@ -11,7 +11,6 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 
 import com.cmpe277.project.zeusrealty.ui.nfc.NfcActivity;
-import com.cmpe277.project.zeusrealty.ui.nfc.NfcFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
