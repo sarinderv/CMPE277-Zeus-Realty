@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "455447274546",
+    "project_id": "zuesrealty",
+    "storage_bucket": "zuesrealty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455447274546:android:27060559662f60b9d7082b",
+        "android_client_info": {
+          "package_name": "com.cmpe277.project.zeusrealty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455447274546-e1c82fc61ghs6g6fak1in3alkktupsbn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cmpe277.project.zeusrealty",
+            "certificate_hash": "26f1c9c0d032362a724aafa4d0c1580807196cb9"
+          }
+        },
+        {
+          "client_id": "455447274546-d2ijkr0j186as4tqh2qvg9r9dlqraid0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBjp49Cm8eWBanXMRQE7g3BpaOLcbX8Gw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455447274546-d2ijkr0j186as4tqh2qvg9r9dlqraid0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -46,6 +46,7 @@ public class MapFragment extends Fragment  implements LocationListener {
     private GoogleMap googleMap;
     private LocationManager locationManager;
     private String provider;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         MapViewModel mapViewModel =
@@ -82,7 +83,7 @@ public class MapFragment extends Fragment  implements LocationListener {
              }
         });
 
-
+        ((MainActivity)getActivity()).getInfo();
         return root;
     }
 

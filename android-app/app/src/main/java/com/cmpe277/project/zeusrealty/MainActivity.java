@@ -20,11 +20,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.cmpe277.project.zeusrealty.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }, intentFilter);
         isLocationPermissionGranted();
         hideFragment();
-
+        mAuth=FirebaseAuth.getInstance();
 
     }
     public void hideFragment(){
@@ -73,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
         ft.show(dFragment);
         ft.commit();
     }
-
+    public void getInfo() {
+        FirebaseUser user=mAuth.getCurrentUser();
+        System.out.println("Print USer Details "+user.getEmail());
+    }
     private boolean isLocationPermissionGranted() {
       if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
               ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -91,4 +96,5 @@ public class MainActivity extends AppCompatActivity {
             return  true;
         }
     }
+
 }
