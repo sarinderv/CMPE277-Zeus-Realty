@@ -1,21 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  Copyright 2014 Google, Inc
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <resources>
     <string name="app_name">Zeus Realty</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="logout">Logout </string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_map">Map</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="goto_btn">Open Listing</string>
+    <string name="title_nfc">NFC</string>
+    <string name="tag_written_toast">Tag Written!</string>
+    <string name="cancel">Cancel</string>
+    <string name="wait_write_dialog_title">Write NFC tag</string>
+    <string name="wait_write_dialog_text">Write NFC tag</string>
+    <string name="area_filter">Area</string>
+    <string name="date_filter">Date</string>
+    <string name="price_filter">Price</string>
+    <string name="search_button">Search</string>
+    <string name="search_loc_text">Enter Location</string>
+
+    <string name="content_produit_detail_building">Building:</string>
+    <string name="content_produit_detail_cellar">Cellar(s):</string>
+    <string name="content_produit_detail_district">District:</string>
+    <string name="content_produit_detail_living_area">Living area:</string>
+    <string name="content_produit_detail_parking">Parking space(s):</string>
+    <string name="content_produit_detail_nb_rooms">Number of rooms:</string>
+    <string name="content_produit_detail_ref">Reference: </string>
+    <string name="content_produit_detail_terrace_area">Terrace area:</string>
+    <string name="content_produit_detail_total_area">Total area:</string>
+    <string name="content_produit_detail_type">Type:</string>
+    <string name="content_produit_detail_datel_created">Date created:</string>
+    <string name="content_produit_detail_datel_last_modified">Last modification:</string>
+
+    <string name="content_produit_detail_email_body_information">I would like to have more information about your real-estate offers.</string>
+    <string name="content_produit_detail_email_body_product">I would like to have more information concerning this product:</string>
+    <string name="content_produit_detail_email_signature">Sent from the Android app Cristea-Flandrin Immobilier</string>
+    <string name="content_produit_detail_email_subject_information">Enquiries for real-estate offers</string>
+    <string name="content_produit_detail_email_subject_product">More information on real-estate offer</string>
+    <string name="content_produit_detail_button_send_info_agency">Contact the\nagency</string>
+    <string name="content_produit_detail_button_send_product">Sent the product\ndetails</string>
+    <string name="content_aide_titre">Help</string>
+    <string name="content_produit_detail_email_body_area">- Area: </string>
+    <string name="content_produit_detail_email_body_price">- Price: </string>
+    <string name="content_produit_detail_email_body_reference">- Reference: </string>
+    <string name="produit_area_not_available">On demand</string>
+
     <string name="no_geocoder_available">No geocoder available</string>
 
     <string name="fetch_address">Fetch address</string>
