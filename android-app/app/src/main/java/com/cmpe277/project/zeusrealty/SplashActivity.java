@@ -14,14 +14,18 @@ import android.os.Bundle;
 
 import com.cmpe277.project.zeusrealty.data.LoginRepository;
 import com.cmpe277.project.zeusrealty.ui.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
     Boolean isLoggedIn;
     static int openapp;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        mAuth=FirebaseAuth.getInstance();
     }
     public void initNavigation(){
 
@@ -54,8 +58,18 @@ public class SplashActivity extends AppCompatActivity {
 
     }
     public boolean alreadyLoggedIn(){
-        SharedPreferences settings = getSharedPreferences("login", 0);
-        this.isLoggedIn = settings.getBoolean("loggedin", false);
-        return this.isLoggedIn;
+        FirebaseUser user=mAuth.getCurrentUser();
+
+        if(user!=null){
+
+            System.out.println(user.getEmail());
+            this.isLoggedIn=true;
+            return true;
+        }
+        else{
+            this.isLoggedIn=true;
+           return false;
+        }
+
     }
 }

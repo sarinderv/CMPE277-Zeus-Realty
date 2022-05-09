@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -78,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
     public void getInfo() {
         FirebaseUser user=mAuth.getCurrentUser();
         System.out.println("Print USer Details "+user.getEmail());
+    }
+    public void logout(){
+        SharedPreferences settings = this.getSharedPreferences("login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("loggedin", false); // set it to false when the user is logged out
+        // Commit the edits!
+        editor.commit();
+        mAuth.signOut();
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction("com.cmpe277.project.intents.ACTION_LOGOUT");
+        this.sendBroadcast(broadcastIntent);
     }
     private boolean isLocationPermissionGranted() {
       if (ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&

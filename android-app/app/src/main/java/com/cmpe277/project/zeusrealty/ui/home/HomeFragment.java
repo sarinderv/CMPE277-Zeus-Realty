@@ -32,21 +32,7 @@ public class HomeFragment extends Fragment {
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        final Button button= binding.button;
-        button.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                SharedPreferences settings = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("loggedin", false); // set it to false when the user is logged out
-                // Commit the edits!
-                editor.commit();
-                Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction("com.cmpe277.project.intents.ACTION_LOGOUT");
-                getActivity().sendBroadcast(broadcastIntent);
-            }
-        });
         return root;
     }
 
