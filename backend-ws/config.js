@@ -9,7 +9,7 @@ const config = {
     database: env.DB_NAME || 'fhdmjxva',
   },
   mongodb: { /* do not put password or any sensitive info here, done only for demo */
-    DB_URI: 'mongodb+srv://cmpe277:Qwerty123@cluster0.yfpgd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    DB_URI: env.MONGO_URI_DB_NAME ||  'mongodb+srv://cmpe277:Qwerty123@cluster0.yfpgd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
   },
   listPerPage: env.LIST_PER_PAGE || 10,
 };
