@@ -6,3 +6,4 @@ local.properties
 .DS_Store
 node_modules/
 backend-ws/node_modules/
+node_modules
