@@ -29,17 +29,16 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="fill"
                 android:layout_weight="1"
-                android:text="title"
+                android:text="Aavlon Morrison Apartments"
                 android:textColor="@color/colorMainProductTitle"
                 android:textSize="@dimen/produit_detail_txtTitleMain"
                 android:textStyle="normal|bold" />
 
             <Button
                 android:id="@+id/button_detail_heart"
-                android:layout_width="@dimen/produit_detail_btn_favorite"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:drawableStart="@drawable/ic_contact_mail" />
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="Add to Favorites" />
 
         </LinearLayout>
 
@@ -61,7 +60,9 @@
                 android:layout_width="@dimen/produit_detail_imageview_width"
                 android:layout_height="@dimen/produit_detail_imageview_height"
                 android:layout_gravity="center"
-                android:background="@color/colorBlackBackground" />
+                android:background="@color/colorBlackBackground"
+                tools:src="@tools:sample/backgrounds/scenic"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <!--            <android.support.v7.widget.RecyclerView-->
             <!--                android:id="@+id/content_product_detail_recycer_view"-->
@@ -94,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="price"
+                android:text="price:$4500"
                 android:textColor="@color/colorBlackTxt"
                 android:textSize="@dimen/produit_detail_txtSizePriceArea"
                 android:textStyle="bold" />
@@ -105,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="area"
+                android:text="Location: San Jose"
                 android:textColor="@color/colorBlackTxt"
                 android:textSize="@dimen/produit_detail_txtSizePriceArea"
                 android:textStyle="bold" />
@@ -127,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="description"
+                android:text="description: Avalon Apartments"
                 android:textColor="@color/colorBlackTxt"
                 android:textStyle="italic" />
         </LinearLayout>
@@ -162,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="http://propertyreference.com/"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -190,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="Apartment"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -218,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="2"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -246,7 +247,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="3200 sq.ft"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -274,7 +275,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="2900 sq.ft"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -302,7 +303,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="500 sq.ft"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -330,7 +331,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="383 Stockton Avenue"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -358,7 +359,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="San Jose"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -376,7 +377,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Ville:"
+                android:text="Unit:"
                 android:textColor="@color/colorField"
                 android:textStyle="bold" />
 
@@ -386,7 +387,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="322"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -414,7 +415,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="United States"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -442,7 +443,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="100 sq.ft"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
@@ -470,7 +471,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="null"
+                android:text="100 sq.ft"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 

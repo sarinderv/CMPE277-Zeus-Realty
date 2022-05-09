@@ -28,7 +28,7 @@
 
     <string name="content_produit_detail_building">Building:</string>
     <string name="content_produit_detail_cellar">Cellar(s):</string>
-    <string name="content_produit_detail_district">District:</string>
+    <string name="content_produit_detail_district">County:</string>
     <string name="content_produit_detail_living_area">Living area:</string>
     <string name="content_produit_detail_parking">Parking space(s):</string>
     <string name="content_produit_detail_nb_rooms">Number of rooms:</string>
