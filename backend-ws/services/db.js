@@ -14,7 +14,7 @@ client.connect(err => {
 
   const collection = client.db("sample_geospatial").collection("propertylistings");
   const query = { "location": { $near: { $geometry: { type: "Point", coordinates: [-121.89, 37.2] }, $minDistance: 10000, $maxDistance: 50000 } } };
-  console.log(query);
+  console.log("client Connected");
 
   //const collection = client.db("sample_geospatial").collection("shipwrecks");
   //const query = { location: { $nearSphere: { $geometry: { type: "Point", coordinates: [ -73.93414657, 40.82302903 ] }, $maxDistance: 5 } } };
@@ -22,11 +22,6 @@ client.connect(err => {
 
   // const collection = client.db("sample_geospatial").collection("shipwrecks");
   // const query = { location: { $geoWithin: { $center: [ [ -73.54, 45.54 ], 160000 ] } } };
-  collection.find(query).toArray(function (err, result) {
-    if (err) throw err;
-    console.log(result);
-    client.close();
-  });
 });
 
 /**
@@ -43,5 +38,6 @@ async function query(query, params) {
 }
 
 module.exports = {
-  query
+  query,
+  client
 }
