@@ -12,8 +12,8 @@ client.connect(err => {
   //const collection = client.db("sample_airbnb").collection("listingsAndReviews");
   //const query = { property_type: "House" };
 
-  const collection = client.db("sample_geospatial").collection("listingsAndReviews");
-  const query = { "location": { $near: { $geometry: { type: "Point", coordinates: [-120, 35] }, $minDistance: 10000, $maxDistance: 50000 } } };
+  const collection = client.db("sample_geospatial").collection("propertylistings");
+  const query = { "location": { $near: { $geometry: { type: "Point", coordinates: [-121.89, 37.2] }, $minDistance: 10000, $maxDistance: 50000 } } };
   console.log(query);
 
   //const collection = client.db("sample_geospatial").collection("shipwrecks");
