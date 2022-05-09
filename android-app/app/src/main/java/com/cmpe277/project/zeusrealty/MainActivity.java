@@ -12,6 +12,8 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.cmpe277.project.zeusrealty.model.LocationAPIResponse;
+import com.cmpe277.project.zeusrealty.ui.dialog.InfoBottomDialog;
 import com.cmpe277.project.zeusrealty.ui.nfc.NfcActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +31,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.cmpe277.project.zeusrealty.databinding.ActivityMainBinding;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -93,11 +96,14 @@ public class MainActivity extends AppCompatActivity {
         ft.hide(dFragment);
         ft.commit();
     }
-    public void showMessageInfo(String text){
-        System.out.println(text);
+    public void showMessageInfo(LocationAPIResponse resp){
+        System.out.println(resp.getName()+" : "+resp.getCategory());
+
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         Fragment dFragment = manager.findFragmentById(R.id.card_fragment);
+        InfoBottomDialog frag=(InfoBottomDialog) dFragment;
+        frag.setInfo(resp);
         ft.show(dFragment);
         ft.commit();
     }
