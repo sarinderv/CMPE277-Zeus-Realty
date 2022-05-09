@@ -7,7 +7,9 @@ const uri = config.mongodb.DB_URI;
 console.log('uri', uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 client.connect(err => {
-  if (err) throw err;
+  if (err) {
+    console.log('err');
+  };
   // perform actions on the collection object
   //const collection = client.db("sample_airbnb").collection("listingsAndReviews");
   //const query = { property_type: "House" };
