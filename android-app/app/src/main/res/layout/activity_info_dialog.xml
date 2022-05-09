@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
 
@@ -34,13 +35,25 @@
             android:textSize="14dp"
             android:text="test"/>
 
-        <Button
+       <!--<com.google.android.material.button.MaterialButton
             android:id="@+id/btn_goto"
-            android:layout_width="113dp"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="70dp"
-            android:text="@string/goto_btn" />
+            android:text="Open"
+            app:icon="@drawable/ic_baseline_open_in_new_24"
+            app:iconGravity="start" />-->
+        <Button
+            android:id="@+id/btn_goto"
+            style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="70dp"
+            android:text=""
+            app:icon="@drawable/ic_baseline_open_in_new_24" />
 
     </androidx.cardview.widget.CardView>
 
