@@ -34,7 +34,8 @@ public class PillowNfcManager {
 	TagWriteListener onTagWriteListener;
 	TagWriteErrorListener onTagWriteErrorListener;
 
-	String writeText = null;
+	static String writeText = null;
+	static boolean isUrl = false;
 
 	
 	public PillowNfcManager(Activity activity) {
@@ -65,8 +66,9 @@ public class PillowNfcManager {
 	/**
 	 * Indicates that we want to write the given text to the next tag detected
 	 */
-	public void writeText(String writeText) {
+	public void writeText(String writeText, boolean isUrl) {
 		this.writeText = writeText;
+		this.isUrl = isUrl;
 	}
 
 	/**
@@ -112,8 +114,9 @@ public class PillowNfcManager {
 	/**
 	 * To be executed on onNewIntent of activity
 	 * @param intent
+	 * @return
 	 */
-	public void onActivityNewIntent(Intent intent) {
+	public boolean onActivityNewIntent(Intent intent) {
 		// TODO Check if the following line has any use 
 		// activity.setIntent(intent);
 		if (writeText == null)
@@ -121,14 +124,17 @@ public class PillowNfcManager {
 		else {
 			Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
 			try {
-				writeTag(activity, tag, writeText);
+				writeTag(activity, tag, writeText, isUrl);
 				onTagWriteListener.onTagWritten();
 			} catch (NFCWriteException exception) {
+				exception.printStackTrace();
 				onTagWriteErrorListener.onTagWriteError(exception);
 			} finally {
 				writeText = null;
 			}
+			return true;
 		}
+		return false;
 	}
 
 	/**
@@ -160,9 +166,13 @@ public class PillowNfcManager {
 	 * @param data
 	 * @throws NFCWriteException
 	 */
-	protected void writeTag(Context context, Tag tag, String data) throws NFCWriteException {
+	protected void writeTag(Context context, Tag tag, String data, boolean url) throws NFCWriteException {
 		// Record with actual data we care about
-		NdefRecord relayRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, null, data.getBytes());
+		NdefRecord relayRecord;
+		if (url)
+			relayRecord = NdefRecord.createUri(data);
+		else
+			relayRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, null, data.getBytes());
 
 		// Complete NDEF message with both records
 		NdefMessage message = new NdefMessage(new NdefRecord[] { relayRecord });

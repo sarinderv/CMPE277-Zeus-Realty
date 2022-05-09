@@ -1,5 +1,7 @@
 package com.cmpe277.project.zeusrealty.ui.nfc;
 
+import static com.cmpe277.project.zeusrealty.ui.nfc.NfcFragment.INTENT_MSG;
+
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -8,6 +10,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cmpe277.project.zeusrealty.R;
 
 import pillownfc.PillowNfcManager;
+import pillownfc.util.WriteTagHelper;
 
 public class NfcActivity extends AppCompatActivity {
     private PillowNfcManager nfcManager;
@@ -22,24 +26,43 @@ public class NfcActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        // check if we are in the process of writing a Tag
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_nfc);
+        // hide Write button and checkbox for intent-driven NFC activity
         Button writeButton = findViewById(R.id.write_button);
-        writeButton.setVisibility(View.GONE); // hide Write button for intent-driven NFC activity
+        writeButton.setVisibility(View.GONE);
+        CheckBox isUrl = findViewById(R.id.is_url);
+        isUrl.setVisibility(View.GONE);
         textNfc = findViewById(R.id.text_nfc);
 
         nfcManager = new PillowNfcManager(this);
         nfcManager.onActivityCreate();
         nfcManager.setOnTagReadListener(tagRead -> textNfc.setText(tagRead));
+        WriteTagHelper writeHelper = new WriteTagHelper(this, nfcManager);
+        nfcManager.setOnTagWriteErrorListener(writeHelper);
+        nfcManager.setOnTagWriteListener(writeHelper);
 
-        setTextNfcMsgFromIntent(getIntent());
+        if (intent.getAction() == null)
+            intent = intent.getParcelableExtra(INTENT_MSG);
+
+        boolean writeOp = nfcManager.onActivityNewIntent(intent);
+        if (writeOp)
+            textNfc.setText("Wrote tag");
+        else
+            setTextNfcMsgFromIntent(intent);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        nfcManager.onActivityNewIntent(intent);
-        setTextNfcMsgFromIntent(intent);
+        boolean writeOp = nfcManager.onActivityNewIntent(intent);
+        if (writeOp)
+            textNfc.setText("Wrote tag");
+        else
+            setTextNfcMsgFromIntent(intent);
     }
 
     private void setTextNfcMsgFromIntent(Intent intent) {

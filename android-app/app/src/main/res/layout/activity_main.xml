@@ -27,6 +27,7 @@
         android:layout_alignParentTop="true"
         app:defaultNavHost="true"
         app:navGraph="@navigation/mobile_navigation" />
+
 <androidx.fragment.app.FragmentContainerView
     android:id="@+id/card_fragment"
     android:layout_width="272dp"
@@ -39,5 +40,6 @@
     app:layout_constraintTop_toTopOf="parent"
     android:name="com.cmpe277.project.zeusrealty.ui.dialog.InfoBottomDialog"
     tools:layout="@layout/activity_info_dialog" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

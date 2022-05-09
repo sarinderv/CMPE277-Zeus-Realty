@@ -10,7 +10,7 @@ public class NfcViewModel extends ViewModel {
 
     public NfcViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is nfc fragment");
+        mText.setValue("Enter a string or URL below:");
     }
 
     public LiveData<String> getText() {
