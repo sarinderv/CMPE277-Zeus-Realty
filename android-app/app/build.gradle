@@ -19,12 +19,12 @@ android {
 
     buildTypes {
         debug {
-            resValue "string", "google_maps_api_key", "AIzaSyAvm3ZXr11Wa4P82MEIjldFRBJOO6Aayx8"
+            resValue "string", "google_maps_api_key", ""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue "string", "google_maps_api_key", "AIzaSyAvm3ZXr11Wa4P82MEIjldFRBJOO6Aayx8"
+            resValue "string", "google_maps_api_key", ""
         }
     }
     compileOptions {
