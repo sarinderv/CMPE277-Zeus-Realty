@@ -12,18 +12,21 @@
         android:layout_height="wrap_content" />
 
     <!-- represents icon -->
-    <ImageView
-        android:id="@+id/iconImg"
-        android:layout_width="@dimen/item_row_imageview_widthHeight"
-        android:layout_height="@dimen/item_row_imageview_widthHeight"
-        android:layout_marginRight="@dimen/item_row_img_marginRight" />
 
+
+    <ImageView
+        android:id="@+id/content_product_detail_recycer_view_cur_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="8dp"
+
+        />
     <!-- TextView for name of the estate-->
     <TextView
         android:id="@+id/nameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/iconImg"
+        android:layout_toRightOf="@+id/content_product_detail_recycer_view_cur_image"
         android:textColor="#343232"
         android:textSize="@dimen/item_row_txtSize_title"
         android:textStyle="bold" />
@@ -34,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nameTxt"
-        android:layout_toRightOf="@id/iconImg"
+        android:layout_toRightOf="@+id/content_product_detail_recycer_view_cur_image"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="#343232"
@@ -46,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/aboutTxt"
         android:layout_marginTop="@dimen/item_row_linla_priceArea_marginTop"
-        android:layout_toRightOf="@id/iconImg"
+        android:layout_toRightOf="@+id/content_product_detail_recycer_view_cur_image"
         android:orientation="horizontal">
 
         <!-- TextView for the price of the estate-->
@@ -77,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/aboutTxt"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/iconImg"
+        android:layout_toRightOf="@+id/content_product_detail_recycer_view_cur_image"
         android:orientation="horizontal">
 
         <Button

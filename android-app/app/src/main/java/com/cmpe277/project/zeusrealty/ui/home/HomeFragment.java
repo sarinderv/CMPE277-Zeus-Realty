@@ -93,15 +93,15 @@ public class HomeFragment extends Fragment {
             stackProperties.setArea(property.getTotal_area());
             stackProperties.setBuilding("322");
             stackProperties.setCity("San Jose");
-            stackProperties.setDesignation(property.getCategory());
+            stackProperties.setDesignation(property.getName());
             stackProperties.setDescription(property.getDescription());
-            stackProperties.setImgUrl("img 1");
+            stackProperties.setImgUrl("https://tripimages.imgix.net/room4/room4.jpg");
             stackProperties.setCount("2");
             stackProperties.setLivingArea(property.getLiving_area());
             stackProperties.setLatitude(property.getX_coordinate());
             stackProperties.setLongitude(property.getY_coordinate());
             stackProperties.setPrice(property.getPrice());
-            stackProperties.setAbout("Property 1");
+            stackProperties.setAbout(property.getCategory());
             stackProperties.setReference("Reference");
             listProperties.add(stackProperties);
         }

@@ -78,7 +78,7 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
         }
 
         //Get our View References from item_row.xml
-        final ImageView iconImg = (ImageView) row.findViewById(R.id.iconImg);
+        final ImageView iconImg = (ImageView) row.findViewById(R.id.content_product_detail_recycer_view_cur_image);
         TextView txtDesignation = (TextView) row.findViewById(R.id.nameTxt);
         TextView txtAbout = (TextView) row.findViewById(R.id.aboutTxt);
         TextView txtPrice = (TextView) row.findViewById(R.id.priceTxt);
@@ -89,7 +89,7 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
             // txtAbout.setText(p.getAbout());
 
             //Initially we want the progress indicator visible, and the image invisible
-           /* indicator.setVisibility(View.VISIBLE); //show progress indicator
+            indicator.setVisibility(View.VISIBLE); //show progress indicator
             iconImg.setVisibility(View.INVISIBLE); //make image invisible
 
             //Setup a listener we can use to switch from the loading indicator to the Image once it's ready
@@ -115,14 +115,16 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
                 public void onLoadingFailed(String arg0, View arg1, FailReason arg2) {
                     // TODO Auto-generated method stub
                 }
-            };*/
+            };
 
             //Load the image and use our options so caching is handled.
-            //imageLoader.displayImage(getItem(pos), iconImg, options, listener);
+            imageLoader.displayImage(getItem(pos).getImgUrl(), iconImg, options, listener);
 
             //  Set the relevant text in our TextViews (ListView)
-       txtDesignation.setText(p.getDesignation());
+        txtDesignation.setText(p.getDesignation());
         txtAbout.setText(p.getAbout());
+        txtPrice.setText(String.valueOf("$"+p.getPrice()));
+        txtTotalArea.setText(String.valueOf(p.getArea() + "sq.ft"));
 
             //return view that represents the full row
         }
