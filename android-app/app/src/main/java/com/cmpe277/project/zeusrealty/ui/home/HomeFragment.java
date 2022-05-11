@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.cmpe277.project.zeusrealty.MainActivity;
 import com.cmpe277.project.zeusrealty.R;
 import com.cmpe277.project.zeusrealty.apiservice.IListingAPI;
 import com.cmpe277.project.zeusrealty.client.RetrofitClientInstance;
@@ -65,6 +67,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Call<PropertyListingAPIResponseContainer> call, Throwable t) {
                 t.printStackTrace();
+            }
+        });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                StackProperties current=listProperties.get(i);
+                ((MainActivity)getActivity()).openDetails(current);
+
             }
         });
         updateProperties();

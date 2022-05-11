@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.cmpe277.project.zeusrealty.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_details"
+            app:destination="@id/navigation_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_map"
@@ -36,4 +40,9 @@
         android:name="com.cmpe277.project.zeusrealty.ArFragment"
         android:label="@string/title_ar"
         tools:layout="@layout/fragment_ar" />
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="com.cmpe277.project.zeusrealty.ui.home.PropertyDetailsFragment"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_property_details" />
 </navigation>
