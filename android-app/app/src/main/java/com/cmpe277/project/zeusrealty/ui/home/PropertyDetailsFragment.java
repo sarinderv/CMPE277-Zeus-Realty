@@ -83,8 +83,8 @@ FragmentPropertyDetailsBinding binding;
        address.setText(props.getAddress());
        //category.setText(props.getCategory());
        country.setText(props.getCountry());
-       area.setText(props.getTotal_area());
-       description.setText(props.getAbout());
+       area.setText(props.getTotal_area()+"sq.ft");
+       description.setText(props.getCategory());
 
        return root;
     }
