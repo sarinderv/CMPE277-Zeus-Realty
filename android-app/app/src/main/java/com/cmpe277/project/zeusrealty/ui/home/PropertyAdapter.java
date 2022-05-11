@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cmpe277.project.zeusrealty.MainActivity;
 import com.cmpe277.project.zeusrealty.R;
 
 import java.util.ArrayList;
@@ -85,48 +87,50 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
         TextView txtTotalArea = (TextView) row.findViewById(R.id.areaTxt);
         final ProgressBar indicator = (ProgressBar) row.findViewById(R.id.progress);
 
-        //Initially we want the progress indicator visible, and the image invisible
-        indicator.setVisibility(View.VISIBLE); //show progress indicator
-        iconImg.setVisibility(View.INVISIBLE); //make image invisible
+        StackProperties p=getItem(pos);
+        if(p!=null) {
+            // txtAbout.setText(p.getAbout());
 
-        //Setup a listener we can use to switch from the loading indicator to the Image once it's ready
-        //changed ImageLoadingListener with SimpleImageLoadingListener
-        SimpleImageLoadingListener listener = new SimpleImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String arg0, View arg1) {
-                // TODO Auto-generated method stub
-            }
+            //Initially we want the progress indicator visible, and the image invisible
+           /* indicator.setVisibility(View.VISIBLE); //show progress indicator
+            iconImg.setVisibility(View.INVISIBLE); //make image invisible
 
-            @Override
-            public void onLoadingCancelled(String arg0, View arg1) {
-                // TODO Auto-generated method stub
-            }
+            //Setup a listener we can use to switch from the loading indicator to the Image once it's ready
+            //changed ImageLoadingListener with SimpleImageLoadingListener
+            SimpleImageLoadingListener listener = new SimpleImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String arg0, View arg1) {
+                    // TODO Auto-generated method stub
+                }
 
-            @Override
-            public void onLoadingComplete(String arg0, View arg1, Bitmap arg2) {
-                indicator.setVisibility(View.INVISIBLE);
-                iconImg.setVisibility(View.VISIBLE);
-            }
+                @Override
+                public void onLoadingCancelled(String arg0, View arg1) {
+                    // TODO Auto-generated method stub
+                }
 
-            @Override
-            public void onLoadingFailed(String arg0, View arg1, FailReason arg2) {
-                // TODO Auto-generated method stub
-            }
-        };
+                @Override
+                public void onLoadingComplete(String arg0, View arg1, Bitmap arg2) {
+                    indicator.setVisibility(View.INVISIBLE);
+                    iconImg.setVisibility(View.VISIBLE);
+                }
 
-        //Load the image and use our options so caching is handled.
-        imageLoader.displayImage(getItem(pos).getImgUrl(), iconImg, options, listener);
+                @Override
+                public void onLoadingFailed(String arg0, View arg1, FailReason arg2) {
+                    // TODO Auto-generated method stub
+                }
+            };*/
 
-        //Set the relevant text in our TextViews (ListView)
-        txtDesignation.setText(getItem(pos).getDesignation());
-        txtAbout.setText(getItem(pos).getAbout());
-        txtPrice.setText(getItem(pos).getPrice());
-        if(getItem(pos).getArea().equalsIgnoreCase("-")){
-            txtTotalArea.setText(context.getString(R.string.produit_area_not_available));
-        } else {
-            txtTotalArea.setText(getItem(pos).getArea());
+            //Load the image and use our options so caching is handled.
+            //imageLoader.displayImage(getItem(pos), iconImg, options, listener);
+
+            //  Set the relevant text in our TextViews (ListView)
+       txtDesignation.setText(p.getDesignation());
+        txtAbout.setText(p.getAbout());
+
+            //return view that represents the full row
+
+
         }
-        //return view that represents the full row
         return row;
     }
 
