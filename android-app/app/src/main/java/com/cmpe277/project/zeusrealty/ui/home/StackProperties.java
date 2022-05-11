@@ -10,32 +10,16 @@ public class StackProperties implements Parcelable {
         /**
          * fields
          */
-        private String count;
-        private String reference;
-        private String dateCreated;
-        private String dateLastModified;
-        private String typeTransaction; //todo fix
-        private String country; //todo fix
-        private String city; //todo fix
-        private String district;
-        private String building;
-        private float latitude;    //todo add
-        private float longitude;   //todo add
-        private String type;
-        private String numberOfRooms;
-        private String cellar;
-        private String parking;
-        private int area;
-        private int livingArea;
-        private String terraceArea;
-        private int price;
-        private String designation;
-        private String about;   //accroche
-        private String description;
-        private String imgUrl;  //first thumbnail
-        private ArrayList<String> imgUrlThumbMul = new ArrayList<String>();
-        private ArrayList<String> imgUrlFullMul = new ArrayList<String>();
-        private String isAddedAsFav = "0";
+        private String name;
+        private String category;
+        private String country;
+    private String address;
+    private String imageURL;
+    private String count;
+    private String about;
+    private String price;
+    private String total_area;
+    private String living_area;
 
         /**
          * Constructor.
@@ -50,32 +34,19 @@ public class StackProperties implements Parcelable {
          * @param parcel
          */
         public StackProperties(Parcel parcel) {
-            this.count = parcel.readString();
-            this.reference = parcel.readString();
-            this.dateCreated = parcel.readString();
-            this.dateLastModified = parcel.readString();
-            this.typeTransaction = parcel.readString();
-            this.country = parcel.readString();
-            this.city = parcel.readString();
-            this.district = parcel.readString();
-            this.building = parcel.readString();
-            this.latitude = parcel.readFloat();
-            this.longitude = parcel.readFloat();
-            this.type = parcel.readString();
-            this.numberOfRooms = parcel.readString();
-            this.cellar = parcel.readString();
-            this.parking = parcel.readString();
-            this.area = parcel.readInt();
-            this.livingArea = parcel.readInt();
-            this.terraceArea = parcel.readString();
-            this.price = parcel.readInt();
-            this.designation = parcel.readString();
-            this.about = parcel.readString();
-            this.description = parcel.readString();
-            this.imgUrl = parcel.readString();
-            imgUrlThumbMul = (ArrayList<String>) parcel.readSerializable();
-            imgUrlFullMul = (ArrayList<String>) parcel.readSerializable();
-            this.isAddedAsFav = parcel.readString();
+
+         //   imgUrlThumbMul = (ArrayList<String>) parcel.readSerializable();
+          //  imgUrlFullMul = (ArrayList<String>) parcel.readSerializable();
+             name=parcel.readString();
+             category=parcel.readString();
+             country=parcel.readString();
+             address=parcel.readString();
+             imageURL=parcel.readString();
+             count= parcel.readString();;
+             about=parcel.readString();
+             price=parcel.readString();
+             total_area=parcel.readString();
+             living_area=parcel.readString();
         }
 
         @Override
@@ -91,32 +62,16 @@ public class StackProperties implements Parcelable {
          */
         @Override
         public void writeToParcel(Parcel parcel, int flag) {
-            parcel.writeString(count);
-            parcel.writeString(reference);
-            parcel.writeString(dateCreated);
-            parcel.writeString(dateLastModified);
-            parcel.writeString(typeTransaction);
+            parcel.writeString(name);
+            parcel.writeString(category);
             parcel.writeString(country);
-            parcel.writeString(city);
-            parcel.writeString(district);
-            parcel.writeString(building);
-            parcel.writeFloat(latitude);
-            parcel.writeFloat(longitude);
-            parcel.writeString(type);
-            parcel.writeString(numberOfRooms);
-            parcel.writeString(cellar);
-            parcel.writeString(parking);
-            parcel.writeInt(area);
-            parcel.writeInt(livingArea);
-            parcel.writeString(terraceArea);
-            parcel.writeInt(price);
-            parcel.writeString(designation);
+            parcel.writeString(address);
+            parcel.writeString(imageURL);
+            parcel.writeString(count);
             parcel.writeString(about);
-            parcel.writeString(description);
-            parcel.writeString(imgUrl);
-            parcel.writeSerializable(imgUrlThumbMul);
-            parcel.writeSerializable(imgUrlFullMul);
-            parcel.writeSerializable(isAddedAsFav);
+            parcel.writeString(price);
+            parcel.writeString(total_area);
+            parcel.writeString(living_area);
         }
 
         /**
@@ -134,211 +89,83 @@ public class StackProperties implements Parcelable {
             }
         };
 
-        public String getDesignation() {
-            return designation;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setDesignation(String designation) {
-            this.designation = designation;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getDescription() {
-            return description;
-        }
+    public String getCategory() {
+        return category;
+    }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-        public String getReference() {
-            return reference;
-        }
+    public String getCountry() {
+        return country;
+    }
 
-        public void setReference(String reference) {
-            this.reference = reference;
-        }
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-        public String getType() {
-            return type;
-        }
+    public String getAddress() {
+        return address;
+    }
 
-        public void setType(String type) {
-            this.type = type;
-        }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-        public String getNumberOfRooms() {
-            return numberOfRooms;
-        }
+    public String getImageURL() {
+        return imageURL;
+    }
 
-        public void setNumberOfRooms(String numberOfRooms) {
-            this.numberOfRooms = numberOfRooms;
-        }
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
-        public int getLivingArea() {
-            return livingArea;
-        }
+    public String getCount() {
+        return count;
+    }
 
-        public void setLivingArea(int livingArea) {
-            this.livingArea = livingArea;
-        }
+    public void setCount(String count) {
+        this.count = count;
+    }
 
-        public String getTerraceArea() {
-            return terraceArea;
-        }
+    public String getAbout() {
+        return about;
+    }
 
-        public void setTerraceArea(String terraceArea) {
-            this.terraceArea = terraceArea;
-        }
+    public void setAbout(String about) {
+        this.about = about;
+    }
 
-        public String getBuilding() {
-            return building;
-        }
+    public String getPrice() {
+        return price;
+    }
 
-        public void setBuilding(String building) {
-            this.building = building;
-        }
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
-        public String getDistrict() {
-            return district;
-        }
+    public String getTotal_area() {
+        return total_area;
+    }
 
-        public void setDistrict(String district) {
-            this.district = district;
-        }
+    public void setTotal_area(String total_area) {
+        this.total_area = total_area;
+    }
 
-        public String getParking() {
-            return parking;
-        }
+    public String getLiving_area() {
+        return living_area;
+    }
 
-        public void setParking(String parking) {
-            this.parking = parking;
-        }
-
-        public String getCellar() {
-            return cellar;
-        }
-
-        public void setCellar(String cellar) {
-            this.cellar = cellar;
-        }
-
-        public String getAbout() {
-            return about;
-        }
-
-        public void setAbout(String about) {
-            this.about = about;
-        }
-
-        public String getImgUrl() {
-            return imgUrl;
-        }
-
-        public void setImgUrl(String imgUrl) {
-            this.imgUrl = imgUrl;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        public void setPrice(int price) {
-            this.price = price;
-        }
-
-        public int getArea() {
-            return area;
-        }
-
-        public void setArea(int area) {
-            this.area = area;
-        }
-
-        public String getDateLastModified() {
-            return dateLastModified;
-        }
-
-        public void setDateLastModified(String dateLastModified) {
-            this.dateLastModified = dateLastModified;
-        }
-
-        public String getDateCreated() {
-            return dateCreated;
-        }
-
-        public void setDateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
-        }
-
-        public void setImgUrlThumbMul(String imgUrl) {
-            imgUrlThumbMul.add(imgUrl);
-        }
-
-        public ArrayList<String> getImgUrlThumbMul() {
-            return imgUrlThumbMul;
-        }
-
-        public void setImgUrlFullMul(String imgUrl) {
-            imgUrlFullMul.add(imgUrl);
-        }
-
-        public ArrayList<String> getImgUrlFullMul() {
-            return imgUrlFullMul;
-        }
-
-        public String getIsAddedAsFav() {
-            return isAddedAsFav;
-        }
-
-        public void setIsAddedAsFav(String isAddedAsFav) {
-            this.isAddedAsFav = isAddedAsFav;
-        }
-
-        public String getTypeTransaction() {
-            return typeTransaction;
-        }
-
-        public void setTypeTransaction(String typeTransaction) {
-            this.typeTransaction = typeTransaction;
-        }
-
-        public String getCountry() {
-            return country;
-        }
-
-        public void setCountry(String country) {
-            this.country = country;
-        }
-
-        public String getCity() {
-            return city;
-        }
-
-        public void setCity(String city) {
-            this.city = city;
-        }
-
-        public float getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(float latitude) {
-            this.latitude = latitude;
-        }
-
-        public float getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(float longitude) {
-            this.longitude = longitude;
-        }
-
-        public String getCount() {
-            return count;
-        }
-
-        public void setCount(String count) {
-            this.count = count;
-        }
+    public void setLiving_area(String living_area) {
+        this.living_area = living_area;
+    }
 }

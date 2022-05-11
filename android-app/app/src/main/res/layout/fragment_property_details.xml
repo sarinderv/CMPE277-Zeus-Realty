@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.cmpe277.project.zeusrealty.ui.home.PropertyDetailsFragment">
+    tools:context=".ui.home.PropertyDetailsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -81,7 +81,7 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
 
         //Get our View References from item_row.xml
         final ImageView iconImg = (ImageView) row.findViewById(R.id.iconImg);
-        TextView txtDesignation = (TextView) row.findViewById(R.id.nameTxt);
+        TextView nameText = (TextView) row.findViewById(R.id.nameTxt);
         TextView txtAbout = (TextView) row.findViewById(R.id.aboutTxt);
         TextView txtPrice = (TextView) row.findViewById(R.id.priceTxt);
         TextView txtTotalArea = (TextView) row.findViewById(R.id.areaTxt);
@@ -124,8 +124,12 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
             //imageLoader.displayImage(getItem(pos), iconImg, options, listener);
 
             //  Set the relevant text in our TextViews (ListView)
-       txtDesignation.setText(p.getDesignation());
-        txtAbout.setText(p.getAbout());
+            nameText.setText(p.getName());
+
+            txtAbout.setText(p.getAbout());
+            txtPrice.setText(p.getPrice());
+            txtTotalArea.setText(p.getTotal_area());
+
 
             //return view that represents the full row
 
