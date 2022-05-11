@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.cmpe277.project.zeusrealty.MainActivity;
 import com.cmpe277.project.zeusrealty.R;
 import com.cmpe277.project.zeusrealty.model.LocationAPIResponse;
+import com.cmpe277.project.zeusrealty.ui.home.StackProperties;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class InfoBottomDialog extends BottomSheetDialogFragment {
@@ -46,7 +47,19 @@ public class InfoBottomDialog extends BottomSheetDialogFragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).switchToFragmentView();
+                LocationAPIResponse property=resp;
+                StackProperties stackProperties = new StackProperties();
+                stackProperties.setAddress(property.getAddress());
+                stackProperties.setImageURL(property.getImageURL());
+                stackProperties.setAbout(property.getAbout());
+                stackProperties.setCategory(property.getCategory());
+                stackProperties.setPrice(property.getPrice());
+                stackProperties.setCount(property.getCount());
+                stackProperties.setName(property.getName());
+                stackProperties.setLiving_area(property.getLiving_area());
+                stackProperties.setTotal_area(property.getTotal_area());
+                stackProperties.setCountry(property.getCountry());
+                ((MainActivity)getActivity()).switchToFragmentView(stackProperties);
             }
         });
     }
