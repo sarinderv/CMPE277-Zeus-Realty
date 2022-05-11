@@ -6,59 +6,59 @@
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/app_marginTop_header"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/product_list_linlaReOrderButtons_paddingLeftRight"
-        android:paddingRight="@dimen/product_list_linlaReOrderButtons_paddingLeftRight">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/app_marginTop_header"-->
+<!--        android:baselineAligned="false"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="@dimen/product_list_linlaReOrderButtons_paddingLeftRight"-->
+<!--        android:paddingRight="@dimen/product_list_linlaReOrderButtons_paddingLeftRight">-->
 
-        <LinearLayout
-            android:id="@+id/layout_btn_reorder"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layout_btn_reorder"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
 
-            <EditText
-                android:id="@+id/search_box"
-                android:layout_width="133dp"
-                android:layout_height="match_parent"
-                android:hint="@string/search_loc_text"
-                android:textStyle="bold|italic"/>
+<!--            <EditText-->
+<!--                android:id="@+id/search_box"-->
+<!--                android:layout_width="133dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:hint="@string/search_loc_text"-->
+<!--                android:textStyle="bold|italic"/>-->
 
-            <Button
-                android:id="@+id/button_search_loc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/product_list_reOrderButtons_marginRight"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:text="@string/search_button"
-                android:textColor="#343232"
-                android:textSize="@dimen/product_list_btn_txtSize"
-                android:textStyle="bold" />
+<!--            <Button-->
+<!--                android:id="@+id/button_search_loc"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="@dimen/product_list_reOrderButtons_marginRight"-->
+<!--                android:background="?android:attr/selectableItemBackground"-->
+<!--                android:clickable="true"-->
+<!--                android:text="@string/search_button"-->
+<!--                android:textColor="#343232"-->
+<!--                android:textSize="@dimen/product_list_btn_txtSize"-->
+<!--                android:textStyle="bold" />-->
 
-            <Button
-                android:id="@+id/button_txt_price_order"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:layout_marginEnd="@dimen/product_list_reOrderButtons_marginRight"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:drawableLeft="@drawable/ic_keyboard_arrow_up"
-                android:text="@string/price_filter"
-                android:textColor="#343232"
-                android:textSize="@dimen/product_list_btn_txtSize"
-                android:textStyle="bold" />
+<!--            <Button-->
+<!--                android:id="@+id/button_txt_price_order"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="38dp"-->
+<!--                android:layout_marginEnd="@dimen/product_list_reOrderButtons_marginRight"-->
+<!--                android:background="?android:attr/selectableItemBackground"-->
+<!--                android:clickable="true"-->
+<!--                android:drawableLeft="@drawable/ic_keyboard_arrow_up"-->
+<!--                android:text="@string/price_filter"-->
+<!--                android:textColor="#343232"-->
+<!--                android:textSize="@dimen/product_list_btn_txtSize"-->
+<!--                android:textStyle="bold" />-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <!-- <LinearLayout
         android:id="@+id/HeaderProgress"
