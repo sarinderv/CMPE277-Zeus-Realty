@@ -24,6 +24,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.squareup.picasso.Picasso;
 
 public class PropertyAdapter extends ArrayAdapter<StackProperties> {
     /**
@@ -129,7 +130,8 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
             txtAbout.setText(p.getAbout());
             txtPrice.setText(p.getPrice());
             txtTotalArea.setText(p.getTotal_area());
-
+            indicator.setVisibility(View.INVISIBLE);
+            Picasso.get().load(p.getImageURL()).into(iconImg);
 
             //return view that represents the full row
 
