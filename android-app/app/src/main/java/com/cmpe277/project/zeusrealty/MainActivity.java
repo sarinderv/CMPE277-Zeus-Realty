@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     FirebaseAuth mAuth;
     StackProperties selProperties;
+
+    public StackProperties getSelProperties() {
+        return selProperties;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

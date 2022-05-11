@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.cmpe277.project.zeusrealty.ArFragment;
+import com.cmpe277.project.zeusrealty.MainActivity;
 import com.cmpe277.project.zeusrealty.R;
 
 
@@ -46,7 +47,9 @@ public class PropertyDetailsFragment extends Fragment {
         if (container != null) {
             container.clearDisappearingChildren();
         }
-        return inflater.inflate(R.layout.fragment_property_details, container, false);
+        View root =inflater.inflate(R.layout.fragment_property_details, container, false);
+        StackProperties props=((MainActivity)getActivity()).getSelProperties();
+        return root;
     }
 }
 
