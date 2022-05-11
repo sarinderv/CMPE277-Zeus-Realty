@@ -15,7 +15,11 @@
         android:id="@+id/navigation_map"
         android:name="com.cmpe277.project.zeusrealty.ui.map.MapFragment"
         android:label="@string/title_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_navigation_map_to_navigation_ar"
+            app:destination="@id/navigation_ar" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -27,4 +31,9 @@
         android:name="com.cmpe277.project.zeusrealty.ui.nfc.NfcFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_nfc" />
+    <fragment
+        android:id="@+id/navigation_ar"
+        android:name="com.cmpe277.project.zeusrealty.ArFragment"
+        android:label="@string/title_ar"
+        tools:layout="@layout/fragment_ar" />
 </navigation>

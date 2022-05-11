@@ -85,9 +85,16 @@ public class PillowNfcManager {
 	 */
 	public boolean onActivityCreate() {
 		nfcAdapter = NfcAdapter.getDefaultAdapter(activity);
-		pendingIntent = PendingIntent.getActivity(activity, 0,
-				new Intent(activity, activity.getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-		return nfcAdapter!=null;
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+			pendingIntent = PendingIntent.getActivity(activity, 0,
+					new Intent(activity, activity.getClass()), PendingIntent.FLAG_IMMUTABLE);
+		}
+		else
+		{
+			pendingIntent = PendingIntent.getActivity(activity, 0,
+					new Intent(activity, activity.getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+		}
+			return nfcAdapter!=null;
 	}
 
 	/**

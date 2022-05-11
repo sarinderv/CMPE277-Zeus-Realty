@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_map, R.id.navigation_notifications, R.id.navigation_nfc)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-     //   NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.cmpe277.project.intents.ACTION_LOGOUT");
@@ -150,4 +149,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void switchToFragmentView() {
+        System.out.println("New Fragment");
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.action_navigation_map_to_navigation_ar);
+    }
 }
