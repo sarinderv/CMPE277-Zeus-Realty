@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         }, intentFilter);
+
         isLocationPermissionGranted();
         hideFragment();
         mAuth=FirebaseAuth.getInstance();
