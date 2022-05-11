@@ -127,8 +127,8 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
             nameText.setText(p.getName());
 
             txtAbout.setText(p.getAbout());
-            txtPrice.setText(p.getPrice());
-            txtTotalArea.setText(p.getTotal_area());
+            txtPrice.setText("$"+p.getPrice());
+            txtTotalArea.setText(p.getTotal_area()+"sq.ft");
 
 
             //return view that represents the full row
