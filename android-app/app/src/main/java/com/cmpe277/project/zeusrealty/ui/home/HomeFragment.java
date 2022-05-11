@@ -24,6 +24,7 @@ import com.cmpe277.project.zeusrealty.client.RetrofitClientInstance;
 import com.cmpe277.project.zeusrealty.databinding.FragmentHomeBinding;
 import com.cmpe277.project.zeusrealty.model.LocationAPIResponse;
 import com.cmpe277.project.zeusrealty.model.PropertyListingAPIResponse;
+import com.cmpe277.project.zeusrealty.model.PropertyListingAPIResponseContainer;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -39,7 +40,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private List<StackProperties> listProperties = new ArrayList<>();
     StackProperties stackProperties;
-
+    ListView lv;
 
     private PropertyAdapter pAdapter;
     public HomeFragment(){};
@@ -49,51 +50,41 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        ListView lv = (ListView)root.findViewById(R.id.propertyList);
+        lv = (ListView)root.findViewById(R.id.propertyList);
         IListingAPI service = RetrofitClientInstance.getRetrofitInstance().create(IListingAPI.class);
         System.out.println("/listings");
-        Call<List<PropertyListingAPIResponse>> call = service.getPropertyListings();
-        call.enqueue(new Callback<List<PropertyListingAPIResponse>>() {
+        Call<PropertyListingAPIResponseContainer> call = service.getPropertyListings();
+        call.enqueue(new Callback<PropertyListingAPIResponseContainer>() {
             @Override
-            public void onResponse(Call<List<PropertyListingAPIResponse>> call, Response<List<PropertyListingAPIResponse>> response) {
-                System.out.println("documents "+response.body().size());
-                stackPropertyList(response.body());
+            public void onResponse(Call<PropertyListingAPIResponseContainer> call, Response<PropertyListingAPIResponseContainer> response) {
+                System.out.println("documents "+response.body().getData().size());
+                stackPropertyList(response.body().getData());
+                updateProperties();
             }
 
             @Override
-            public void onFailure(Call<List<PropertyListingAPIResponse>> call, Throwable t) {
-                System.out.println("error "+t.getMessage());
+            public void onFailure(Call<PropertyListingAPIResponseContainer> call, Throwable t) {
+                t.printStackTrace();
             }
         });
+        updateProperties();
         //ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,listProperty);
         //lv.setAdapter(arrayAdapter);
-        listProperties.add(stackProperties);
 
-        pAdapter = new PropertyAdapter(getActivity(), -1, listProperties);
-        lv.setAdapter(pAdapter);
 
         //View root = binding.getRoot();
 
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-//        final Button button= binding.button;
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                SharedPreferences settings = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = settings.edit();
-//                editor.putBoolean("loggedin", false); // set it to false when the user is logged out
-//                // Commit the edits!
-//                editor.commit();
-//                Intent broadcastIntent = new Intent();
-//                broadcastIntent.setAction("com.cmpe277.project.intents.ACTION_LOGOUT");
-//                getActivity().sendBroadcast(broadcastIntent);
-//            }
-//        });
+
          return root;
     }
+    public void updateProperties(){
+        listProperties.add(stackProperties);
 
+        pAdapter = new PropertyAdapter(getActivity(), -1, listProperties);
+        lv.setAdapter(pAdapter);
+    }
     public void stackPropertyList(List<PropertyListingAPIResponse> propertyList) {
         for (PropertyListingAPIResponse property:
                 propertyList) {

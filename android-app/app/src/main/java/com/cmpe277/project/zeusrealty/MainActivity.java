@@ -39,7 +39,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    //FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }, intentFilter);
         isLocationPermissionGranted();
         hideFragment();
-        //mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance();
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
     public void getInfo() {
-        //FirebaseUser user=mAuth.getCurrentUser();
-        //System.out.println("Print USer Details "+user.getEmail());
+        FirebaseUser user=mAuth.getCurrentUser();
+        System.out.println("Print USer Details "+user.getEmail());
     }
     public void logout(){
         SharedPreferences settings = this.getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("loggedin", false); // set it to false when the user is logged out
         // Commit the edits!
         editor.commit();
-        //mAuth.signOut();
+        mAuth.signOut();
         Intent broadcastIntent = new Intent();
         broadcastIntent.setAction("com.cmpe277.project.intents.ACTION_LOGOUT");
         this.sendBroadcast(broadcastIntent);

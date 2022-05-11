@@ -1,5 +1,6 @@
 package com.cmpe277.project.zeusrealty.model;
 
+
 public class PropertyListingAPIResponse {
     public int id;
     public String name;

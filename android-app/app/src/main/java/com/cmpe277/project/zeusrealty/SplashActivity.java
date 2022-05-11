@@ -20,12 +20,12 @@ import com.google.firebase.auth.FirebaseUser;
 public class SplashActivity extends AppCompatActivity {
     Boolean isLoggedIn;
     static int openapp;
-    //FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-       // mAuth=FirebaseAuth.getInstance();
+        mAuth=FirebaseAuth.getInstance();
     }
     public void initNavigation(){
 
@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                   //openApp();
+                   openApp();
                 }
             }
     );
@@ -58,19 +58,18 @@ public class SplashActivity extends AppCompatActivity {
 
     }
     public boolean alreadyLoggedIn(){
-        //FirebaseUser user=mAuth.getCurrentUser();
+        FirebaseUser user=mAuth.getCurrentUser();
 
-//        if(user!=null){
-//
-//            System.out.println(user.getEmail());
-//            this.isLoggedIn=true;
-//            return true;
-//        }
-//        else{
-//            this.isLoggedIn=true;
-//           return false;
-//        }
-        return true;
+        if(user!=null){
+
+            System.out.println(user.getEmail());
+            this.isLoggedIn=true;
+            return true;
+        }
+        else{
+            this.isLoggedIn=true;
+           return false;
+        }
 
     }
 }
