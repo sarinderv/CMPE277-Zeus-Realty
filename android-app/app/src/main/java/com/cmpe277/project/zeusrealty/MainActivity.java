@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         }, intentFilter);
+
         isLocationPermissionGranted();
         hideFragment();
         mAuth=FirebaseAuth.getInstance();
@@ -156,10 +157,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void switchToFragmentView() {
+    public void switchToFragmentView(StackProperties props) {
         System.out.println("New Fragment");
+        this.selProperties=props;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.action_navigation_map_to_navigation_ar);
+        navController.navigate(R.id.action_navigation_map_to_navigation_details);
     }
 
     public void openDetails(StackProperties props) {

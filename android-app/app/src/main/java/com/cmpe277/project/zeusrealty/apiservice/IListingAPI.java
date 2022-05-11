@@ -16,8 +16,10 @@ public interface IListingAPI {
         Call<List<LocationAPIResponse>> getLocationDetailsatCenter(@Query("lat") String lat,@Query("long") String longitude);
         @GET("/locations/bounds")
         Call<List<LocationAPIResponse>> getLocationDetailsInsideRectangle(@Query("bounds") String bounds);
-        @GET("/listings/byproperty/{id}")
-        Call<PropertyListingAPIResponseContainer> getLocationDetailsById(@Path(value="id") String propertyid);
+        @GET("/locations/byproperty/{id}")
+        Call<LocationAPIResponse> getLocationDetailsById(@Path(value="id") String propertyid);
+        @GET("/locations/all")
+        Call<List<LocationAPIResponse>> getAllProperties();
 
         @GET("/listings")
         Call<PropertyListingAPIResponseContainer> getPropertyListings();

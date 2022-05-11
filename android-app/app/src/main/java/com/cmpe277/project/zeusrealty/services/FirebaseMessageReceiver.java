@@ -67,6 +67,7 @@ public class FirebaseMessageReceiver
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             public void run() {
+
                 Toast.makeText(getApplicationContext(),""+message,Toast.LENGTH_SHORT).show();
             }
         });

@@ -55,17 +55,17 @@ public class HomeFragment extends Fragment {
         lv = (ListView)root.findViewById(R.id.propertyList);
         IListingAPI service = RetrofitClientInstance.getRetrofitInstance().create(IListingAPI.class);
         System.out.println("/listings");
-        Call<PropertyListingAPIResponseContainer> call = service.getPropertyListings();
-        call.enqueue(new Callback<PropertyListingAPIResponseContainer>() {
+        Call<List<LocationAPIResponse>> call = service.getAllProperties();
+        call.enqueue(new Callback<List<LocationAPIResponse>>() {
             @Override
-            public void onResponse(Call<PropertyListingAPIResponseContainer> call, Response<PropertyListingAPIResponseContainer> response) {
-                System.out.println("documents "+response.body().getData().size());
-                stackPropertyList(response.body().getData());
+            public void onResponse(Call<List<LocationAPIResponse>> call, Response<List<LocationAPIResponse>> response) {
+                System.out.println("documents "+response.body().size());
+                stackPropertyList(response.body());
                 updateProperties();
             }
 
             @Override
-            public void onFailure(Call<PropertyListingAPIResponseContainer> call, Throwable t) {
+            public void onFailure(Call<List<LocationAPIResponse>> call, Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -95,24 +95,20 @@ public class HomeFragment extends Fragment {
         pAdapter = new PropertyAdapter(getActivity(), -1, listProperties);
         lv.setAdapter(pAdapter);
     }
-    public void stackPropertyList(List<PropertyListingAPIResponse> propertyList) {
-        for (PropertyListingAPIResponse property:
+    public void stackPropertyList(List<LocationAPIResponse> propertyList) {
+        for (LocationAPIResponse property:
                 propertyList) {
             stackProperties = new StackProperties();
-            stackProperties.setCountry("US");
-            stackProperties.setArea(property.getTotal_area());
-            stackProperties.setBuilding("322");
-            stackProperties.setCity("San Jose");
-            stackProperties.setDesignation(property.getCategory());
-            stackProperties.setDescription(property.getDescription());
-            stackProperties.setImgUrl("img 1");
-            stackProperties.setCount("2");
-            stackProperties.setLivingArea(property.getLiving_area());
-            stackProperties.setLatitude(property.getX_coordinate());
-            stackProperties.setLongitude(property.getY_coordinate());
+            stackProperties.setAddress(property.getAddress());
+            stackProperties.setImageURL(property.getImageURL());
+            stackProperties.setAbout(property.getAbout());
+            stackProperties.setCategory(property.getCategory());
             stackProperties.setPrice(property.getPrice());
-            stackProperties.setAbout("Property 1");
-            stackProperties.setReference("Reference");
+            stackProperties.setCount(property.getCount());
+            stackProperties.setName(property.getName());
+            stackProperties.setLiving_area(property.getLiving_area());
+            stackProperties.setTotal_area(property.getTotal_area());
+            stackProperties.setCountry(property.getCountry());
             listProperties.add(stackProperties);
         }
 
