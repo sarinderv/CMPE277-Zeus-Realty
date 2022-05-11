@@ -32,6 +32,7 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
     List<StackProperties> productList;
     SparseBooleanArray mSelectedItemsIds;
     Context context;
+    List<StackProperties> items;
 
 
     /**
@@ -130,6 +131,11 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
         return row;
     }
 
+    public void update(ArrayList<StackProperties> results){
+        items = new ArrayList<>();
+        items.addAll(results);
+        notifyDataSetChanged();
+    }
 
     /***********************************************************************************************
      * START OF MULTIPLE ITEM DELETION METHODS                                                     *

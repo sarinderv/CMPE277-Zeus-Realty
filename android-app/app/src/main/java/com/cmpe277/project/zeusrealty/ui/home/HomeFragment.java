@@ -7,14 +7,19 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -32,16 +37,18 @@ public class HomeFragment extends Fragment {
 
 
     private PropertyAdapter pAdapter;
+    ListView lv;
     public HomeFragment(){};
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        setHasOptionsMenu(true);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        ArrayList<String> listProperty = new ArrayList<>();
-        ListView lv = (ListView)root.findViewById(R.id.propertyList);
-        listProperty.add("Here's an example");
+        //ArrayList<String> listProperty = new ArrayList<>();
+        lv = (ListView)root.findViewById(R.id.propertyList);
+        //listProperty.add("Here's an example");
 
         //ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,listProperty);
         //lv.setAdapter(arrayAdapter);
@@ -49,7 +56,7 @@ public class HomeFragment extends Fragment {
         stackProperties.setArea("383 Stockton AVenue");
         stackProperties.setBuilding("322");
         stackProperties.setCity("San Jose");
-        stackProperties.setDesignation("designation of property");
+        stackProperties.setDesignation("Cahill");
         stackProperties.setDescription("desc");
         stackProperties.setImgUrl("img1");
         stackProperties.setCount("2");
@@ -66,7 +73,7 @@ public class HomeFragment extends Fragment {
         stackProperties.setArea("833 Stockton AVenue");
         stackProperties.setBuilding("Apartment 319");
         stackProperties.setCity("San Jose");
-        stackProperties.setDesignation("designation of property 2");
+        stackProperties.setDesignation("Morrison");
         stackProperties.setDescription("desc");
         stackProperties.setImgUrl("img1");
         stackProperties.setCount("2");
@@ -80,10 +87,10 @@ public class HomeFragment extends Fragment {
 
         stackProperties = new StackProperties();
         stackProperties.setCountry("country3");
-        stackProperties.setArea("389 Stockton AVenue");
+        stackProperties.setArea("768 Stockton Avenue");
         stackProperties.setBuilding("Apartment 320");
         stackProperties.setCity("San Jose");
-        stackProperties.setDesignation("designation of property 3");
+        stackProperties.setDesignation("Alameda");
         stackProperties.setDescription("desc 3");
         stackProperties.setImgUrl("img1");
         stackProperties.setCount("2");
@@ -98,6 +105,8 @@ public class HomeFragment extends Fragment {
 
         pAdapter = new PropertyAdapter(getActivity(), -1, listProperties);
         lv.setAdapter(pAdapter);
+
+
 
         //View root = binding.getRoot();
 
@@ -122,8 +131,49 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+//    @Override
+//    public void onActivityCreated(Bundle savedInstanceState) {
+//        // TODO Auto-generated method stub
+//        super.onActivityCreated(savedInstanceState);
+//        setHasOptionsMenu(true);
+//    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater){
+        super.onCreateOptionsMenu(menu, menuInflater);
+        menu.clear();
+        menuInflater.inflate(R.menu.my_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.searchMenu);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ArrayList<StackProperties> results = new ArrayList<>();
+                for(StackProperties property:listProperties){
+                    if(property.getDesignation().contains(newText)){
+                        results.add(property);
+                    }
+                }
+                ((PropertyAdapter)lv.getAdapter()).update(results);
+                return false;
+            }
+        });
+
     }
 }
