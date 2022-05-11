@@ -19,16 +19,16 @@ public class StackProperties implements Parcelable {
         private String city; //todo fix
         private String district;
         private String building;
-        private String latitude;    //todo add
-        private String longitude;   //todo add
+        private float latitude;    //todo add
+        private float longitude;   //todo add
         private String type;
         private String numberOfRooms;
         private String cellar;
         private String parking;
-        private String area;
-        private String livingArea;
+        private int area;
+        private int livingArea;
         private String terraceArea;
-        private String price;
+        private int price;
         private String designation;
         private String about;   //accroche
         private String description;
@@ -59,16 +59,16 @@ public class StackProperties implements Parcelable {
             this.city = parcel.readString();
             this.district = parcel.readString();
             this.building = parcel.readString();
-            this.latitude = parcel.readString();
-            this.longitude = parcel.readString();
+            this.latitude = parcel.readFloat();
+            this.longitude = parcel.readFloat();
             this.type = parcel.readString();
             this.numberOfRooms = parcel.readString();
             this.cellar = parcel.readString();
             this.parking = parcel.readString();
-            this.area = parcel.readString();
-            this.livingArea = parcel.readString();
+            this.area = parcel.readInt();
+            this.livingArea = parcel.readInt();
             this.terraceArea = parcel.readString();
-            this.price = parcel.readString();
+            this.price = parcel.readInt();
             this.designation = parcel.readString();
             this.about = parcel.readString();
             this.description = parcel.readString();
@@ -100,16 +100,16 @@ public class StackProperties implements Parcelable {
             parcel.writeString(city);
             parcel.writeString(district);
             parcel.writeString(building);
-            parcel.writeString(latitude);
-            parcel.writeString(longitude);
+            parcel.writeFloat(latitude);
+            parcel.writeFloat(longitude);
             parcel.writeString(type);
             parcel.writeString(numberOfRooms);
             parcel.writeString(cellar);
             parcel.writeString(parking);
-            parcel.writeString(area);
-            parcel.writeString(livingArea);
+            parcel.writeInt(area);
+            parcel.writeInt(livingArea);
             parcel.writeString(terraceArea);
-            parcel.writeString(price);
+            parcel.writeInt(price);
             parcel.writeString(designation);
             parcel.writeString(about);
             parcel.writeString(description);
@@ -174,11 +174,11 @@ public class StackProperties implements Parcelable {
             this.numberOfRooms = numberOfRooms;
         }
 
-        public String getLivingArea() {
+        public int getLivingArea() {
             return livingArea;
         }
 
-        public void setLivingArea(String livingArea) {
+        public void setLivingArea(int livingArea) {
             this.livingArea = livingArea;
         }
 
@@ -238,19 +238,19 @@ public class StackProperties implements Parcelable {
             this.imgUrl = imgUrl;
         }
 
-        public String getPrice() {
+        public int getPrice() {
             return price;
         }
 
-        public void setPrice(String price) {
+        public void setPrice(int price) {
             this.price = price;
         }
 
-        public String getArea() {
+        public int getArea() {
             return area;
         }
 
-        public void setArea(String area) {
+        public void setArea(int area) {
             this.area = area;
         }
 
@@ -318,19 +318,19 @@ public class StackProperties implements Parcelable {
             this.city = city;
         }
 
-        public String getLatitude() {
+        public float getLatitude() {
             return latitude;
         }
 
-        public void setLatitude(String latitude) {
+        public void setLatitude(float latitude) {
             this.latitude = latitude;
         }
 
-        public String getLongitude() {
+        public float getLongitude() {
             return longitude;
         }
 
-        public void setLongitude(String longitude) {
+        public void setLongitude(float longitude) {
             this.longitude = longitude;
         }
 

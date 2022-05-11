@@ -26,6 +26,22 @@ router.get('/bounds', async function(req, res, next) {
     res.status(err.statusCode || 500).json({'message': err.message});
   }
 });
-
+router.get('/byproperty/:id', async function(req, res, next) {
+  try {
+    let id=req.params.id;
+    res.json(await locationlistings.findPropertyById(id));
+  } catch (err) {
+    console.error(`Error while getting listings `, err.message);
+    res.status(err.statusCode || 500).json({'message': err.message});
+  }
+});
+router.get('/all', async function(req, res, next) {
+  try {
+    res.json(await locationlistings.fetchall());
+  } catch (err) {
+    console.error(`Error while getting listings `, err.message);
+    res.status(err.statusCode || 500).json({'message': err.message});
+  }
+});
 
 module.exports = router;

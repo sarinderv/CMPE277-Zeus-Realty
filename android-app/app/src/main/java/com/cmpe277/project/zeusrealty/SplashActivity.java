@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                   //openApp();
+                   openApp();
                 }
             }
     );

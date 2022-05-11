@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.cmpe277.project.zeusrealty.MainActivity;
 import com.cmpe277.project.zeusrealty.R;
 import com.cmpe277.project.zeusrealty.model.LocationAPIResponse;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -40,5 +42,12 @@ public class InfoBottomDialog extends BottomSheetDialogFragment {
         textView.setText(resp.getName());
         final TextView snippet =view.findViewById(R.id.snippet);
         snippet.setText(resp.getCategory());
+        final Button btn =view.findViewById(R.id.btn_goto);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).switchToFragmentView();
+            }
+        });
     }
 }
