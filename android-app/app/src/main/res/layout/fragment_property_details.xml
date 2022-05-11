@@ -57,7 +57,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/content_product_detail_recycer_view_cur_image"
+                android:id="@+id/iconImg1"
                 android:layout_width="@dimen/produit_detail_imageview_width"
                 android:layout_height="@dimen/produit_detail_imageview_height"
                 android:layout_gravity="center"
@@ -138,33 +138,6 @@
             android:layout_marginTop="@dimen/produit_detail_marginTop_big_space"
             android:background="@color/colorBlackBackground" />
 
-        <!-- REFERENCE -->
-        <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_reference"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/produit_detail_marginTop_small_space"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView100"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="@string/content_produit_detail_ref"
-                android:textColor="@color/colorField"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_detail_ref"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="null"
-                android:textColor="@color/colorBlackText" />
-        </LinearLayout>
 
         <!-- TYPE -->
         <LinearLayout
@@ -175,7 +148,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView101"
+                android:id="@+id/textCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -278,26 +251,26 @@
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
-        <!-- TERRACE AREA -->
+        <!-- ADDRESS -->
         <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_area_terrace"
+            android:id="@+id/addressId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/produit_detail_marginTop_detailFields"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView105"
+                android:id="@+id/textView189"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="@string/content_produit_detail_terrace_area"
+                android:text="Address:"
                 android:textColor="@color/colorField"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_detail_terrace_area"
+                android:id="@+id/txt_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -306,7 +279,7 @@
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
 
-        <!-- BUILDING -->
+        <!-- COUNTRY -->
         <LinearLayout
             android:id="@+id/content_produit_detail_linear_layout_building"
             android:layout_width="match_parent"
@@ -320,96 +293,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="@string/content_produit_detail_building"
-                android:textColor="@color/colorField"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_detail_building"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="null"
-                android:textColor="@color/colorBlackText" />
-        </LinearLayout>
-
-        <!-- DISTRICT -->
-        <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_district"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/produit_detail_marginTop_detailFields"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView107"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="@string/content_produit_detail_district"
-                android:textColor="@color/colorField"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_detail_district"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="null"
-                android:textColor="@color/colorBlackText" />
-        </LinearLayout>
-
-        <!-- CITY -->
-        <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/produit_detail_marginTop_detailFields"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView1070"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Ville:"
-                android:textColor="@color/colorField"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_detail_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="null"
-                android:textColor="@color/colorBlackText" />
-        </LinearLayout>
-
-        <!-- COUNTRY -->
-        <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/produit_detail_marginTop_detailFields"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView10700"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
                 android:text="Country:"
                 android:textColor="@color/colorField"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_detail_country"
+                android:id="@+id/txt_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -417,63 +306,6 @@
                 android:text="null"
                 android:textColor="@color/colorBlackText" />
         </LinearLayout>
-
-        <!-- NUM PARKING -->
-        <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_parking"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/produit_detail_marginTop_detailFields"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView1071"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="@string/content_produit_detail_parking"
-                android:textColor="@color/colorField"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_detail_parking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="null"
-                android:textColor="@color/colorBlackText" />
-        </LinearLayout>
-
-        <!-- NUM CELLAR -->
-        <LinearLayout
-            android:id="@+id/content_produit_detail_linear_layout_cellar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/produit_detail_marginTop_detailFields"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView1073"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="@string/content_produit_detail_cellar"
-                android:textColor="@color/colorField"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_detail_cellar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="null"
-                android:textColor="@color/colorBlackText" />
-        </LinearLayout>
-
     </LinearLayout>
 
 </ScrollView>
