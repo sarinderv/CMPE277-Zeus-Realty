@@ -19,16 +19,26 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.cmpe277.project.zeusrealty.R;
+import com.cmpe277.project.zeusrealty.apiservice.IListingAPI;
+import com.cmpe277.project.zeusrealty.client.RetrofitClientInstance;
 import com.cmpe277.project.zeusrealty.databinding.FragmentHomeBinding;
+import com.cmpe277.project.zeusrealty.model.LocationAPIResponse;
+import com.cmpe277.project.zeusrealty.model.PropertyListingAPIResponse;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private List<StackProperties> listProperties = new ArrayList<>();
-    StackProperties stackProperties = new StackProperties();
+    StackProperties stackProperties;
 
 
     private PropertyAdapter pAdapter;
@@ -39,61 +49,24 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        ArrayList<String> listProperty = new ArrayList<>();
         ListView lv = (ListView)root.findViewById(R.id.propertyList);
-        listProperty.add("Here's an example");
+        IListingAPI service = RetrofitClientInstance.getRetrofitInstance().create(IListingAPI.class);
+        System.out.println("/listings");
+        Call<List<PropertyListingAPIResponse>> call = service.getPropertyListings();
+        call.enqueue(new Callback<List<PropertyListingAPIResponse>>() {
+            @Override
+            public void onResponse(Call<List<PropertyListingAPIResponse>> call, Response<List<PropertyListingAPIResponse>> response) {
+                System.out.println("documents "+response.body().size());
+                stackPropertyList(response.body());
+            }
 
+            @Override
+            public void onFailure(Call<List<PropertyListingAPIResponse>> call, Throwable t) {
+                System.out.println("error "+t.getMessage());
+            }
+        });
         //ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,listProperty);
         //lv.setAdapter(arrayAdapter);
-        stackProperties.setCountry("country1");
-        stackProperties.setArea("383 Stockton AVenue");
-        stackProperties.setBuilding("322");
-        stackProperties.setCity("San Jose");
-        stackProperties.setDesignation("designation of property");
-        stackProperties.setDescription("desc");
-        stackProperties.setImgUrl("img1");
-        stackProperties.setCount("2");
-        stackProperties.setLivingArea("living area");
-        stackProperties.setLatitude("32");
-        stackProperties.setLongitude("34");
-        stackProperties.setPrice("$3245");
-        stackProperties.setAbout("Property 1");
-        stackProperties.setReference("Reference");
-        listProperties.add(stackProperties);
-
-        stackProperties = new StackProperties();
-        stackProperties.setCountry("country2");
-        stackProperties.setArea("833 Stockton AVenue");
-        stackProperties.setBuilding("Apartment 319");
-        stackProperties.setCity("San Jose");
-        stackProperties.setDesignation("designation of property 2");
-        stackProperties.setDescription("desc");
-        stackProperties.setImgUrl("img1");
-        stackProperties.setCount("2");
-        stackProperties.setLivingArea("living area");
-        stackProperties.setLatitude("32");
-        stackProperties.setLongitude("34");
-        stackProperties.setPrice("$3245");
-        stackProperties.setAbout("Property 2");
-        stackProperties.setReference("Reference");
-        listProperties.add(stackProperties);
-
-        stackProperties = new StackProperties();
-        stackProperties.setCountry("country3");
-        stackProperties.setArea("389 Stockton AVenue");
-        stackProperties.setBuilding("Apartment 320");
-        stackProperties.setCity("San Jose");
-        stackProperties.setDesignation("designation of property 3");
-        stackProperties.setDescription("desc 3");
-        stackProperties.setImgUrl("img1");
-        stackProperties.setCount("2");
-        stackProperties.setLivingArea("living area");
-        stackProperties.setLatitude("32");
-        stackProperties.setLongitude("34");
-        stackProperties.setPrice("$3245");
-        stackProperties.setAbout("Property 3");
-        stackProperties.setReference("Reference");
-
         listProperties.add(stackProperties);
 
         pAdapter = new PropertyAdapter(getActivity(), -1, listProperties);
@@ -119,6 +92,29 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
          return root;
+    }
+
+    public void stackPropertyList(List<PropertyListingAPIResponse> propertyList) {
+        for (PropertyListingAPIResponse property:
+                propertyList) {
+            stackProperties = new StackProperties();
+            stackProperties.setCountry("US");
+            stackProperties.setArea(property.getTotal_area());
+            stackProperties.setBuilding("322");
+            stackProperties.setCity("San Jose");
+            stackProperties.setDesignation(property.getCategory());
+            stackProperties.setDescription(property.getDescription());
+            stackProperties.setImgUrl("img 1");
+            stackProperties.setCount("2");
+            stackProperties.setLivingArea(property.getLiving_area());
+            stackProperties.setLatitude(property.getX_coordinate());
+            stackProperties.setLongitude(property.getY_coordinate());
+            stackProperties.setPrice(property.getPrice());
+            stackProperties.setAbout("Property 1");
+            stackProperties.setReference("Reference");
+            listProperties.add(stackProperties);
+        }
+
     }
 
     @Override

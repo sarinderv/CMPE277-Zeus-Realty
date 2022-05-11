@@ -115,17 +115,17 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
         };
 
         //Load the image and use our options so caching is handled.
-        imageLoader.displayImage(getItem(pos).getImgUrl(), iconImg, options, listener);
+        //imageLoader.displayImage(getItem(pos), iconImg, options, listener);
 
         //Set the relevant text in our TextViews (ListView)
-        txtDesignation.setText(getItem(pos).getDesignation());
-        txtAbout.setText(getItem(pos).getAbout());
-        txtPrice.setText(getItem(pos).getPrice());
-        if(getItem(pos).getArea().equalsIgnoreCase("-")){
-            txtTotalArea.setText(context.getString(R.string.produit_area_not_available));
-        } else {
-            txtTotalArea.setText(getItem(pos).getArea());
-        }
+//        txtDesignation.setText(getItem(pos).getDesignation());
+//        txtAbout.setText(getItem(pos).getAbout());
+//        txtPrice.setText(getItem(pos).getPrice());
+//        if(getItem(pos).getArea().equalsIgnoreCase("-")){
+//            txtTotalArea.setText(context.getString(R.string.produit_area_not_available));
+//        } else {
+//            txtTotalArea.setText(getItem(pos).getArea());
+//        }
         //return view that represents the full row
         return row;
     }
