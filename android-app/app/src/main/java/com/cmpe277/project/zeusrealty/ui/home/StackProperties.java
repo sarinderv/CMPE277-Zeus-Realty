@@ -14,6 +14,7 @@ public class StackProperties implements Parcelable {
         private String reference;
         private String dateCreated;
         private String dateLastModified;
+        private String address;
         private String typeTransaction; //todo fix
         private String country; //todo fix
         private String city; //todo fix
@@ -76,6 +77,7 @@ public class StackProperties implements Parcelable {
             imgUrlThumbMul = (ArrayList<String>) parcel.readSerializable();
             imgUrlFullMul = (ArrayList<String>) parcel.readSerializable();
             this.isAddedAsFav = parcel.readString();
+            this.address = parcel.readString();
         }
 
         @Override
@@ -117,6 +119,7 @@ public class StackProperties implements Parcelable {
             parcel.writeSerializable(imgUrlThumbMul);
             parcel.writeSerializable(imgUrlFullMul);
             parcel.writeSerializable(isAddedAsFav);
+            parcel.writeSerializable(address);
         }
 
         /**
@@ -340,5 +343,13 @@ public class StackProperties implements Parcelable {
 
         public void setCount(String count) {
             this.count = count;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
         }
 }

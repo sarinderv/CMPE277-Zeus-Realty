@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.cmpe277.project.zeusrealty.model.LocationAPIResponse;
 import com.cmpe277.project.zeusrealty.ui.dialog.InfoBottomDialog;
+import com.cmpe277.project.zeusrealty.ui.home.StackProperties;
 import com.cmpe277.project.zeusrealty.ui.nfc.NfcActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     FirebaseAuth mAuth;
+    StackProperties selProperties;
+
+    public StackProperties getSelProperties() {
+        return selProperties;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,5 +160,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("New Fragment");
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         navController.navigate(R.id.action_navigation_map_to_navigation_ar);
+    }
+
+    public void openDetails(StackProperties props) {
+        this.selProperties=props;
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.action_navigation_home_to_navigation_details);
     }
 }

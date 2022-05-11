@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cmpe277.project.zeusrealty.MainActivity;
 import com.cmpe277.project.zeusrealty.R;
 
 import java.util.ArrayList;
@@ -84,6 +86,7 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
         TextView txtPrice = (TextView) row.findViewById(R.id.priceTxt);
         TextView txtTotalArea = (TextView) row.findViewById(R.id.areaTxt);
         final ProgressBar indicator = (ProgressBar) row.findViewById(R.id.progress);
+
         StackProperties p=getItem(pos);
         if(p!=null) {
             // txtAbout.setText(p.getAbout());
@@ -127,6 +130,8 @@ public class PropertyAdapter extends ArrayAdapter<StackProperties> {
         txtTotalArea.setText(String.valueOf(p.getArea() + "sq.ft"));
 
             //return view that represents the full row
+
+
         }
         return row;
     }
