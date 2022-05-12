@@ -62,5 +62,13 @@ public class InfoBottomDialog extends BottomSheetDialogFragment {
                 ((MainActivity)getActivity()).switchToFragmentView(stackProperties);
             }
         });
+        final Button btnae =view.findViewById(R.id.btn_goto_ar);
+        btnae.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).switchToArFragmentView();
+            }
+        });
+
     }
 }
