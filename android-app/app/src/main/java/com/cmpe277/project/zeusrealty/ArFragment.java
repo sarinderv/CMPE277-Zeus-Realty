@@ -63,6 +63,9 @@ public class ArFragment extends Fragment {
 
             container.clearDisappearingChildren();
         }
-        return inflater.inflate(R.layout.fragment_ar, container, false);
+        View view= inflater.inflate(R.layout.fragment_ar, container, false);
+        com.google.ar.sceneform.ux.ArFragment arFragment= (com.google.ar.sceneform.ux.ArFragment)(getChildFragmentManager().findFragmentById(R.id.arFragment));
+        arFragment.setOnTapPlaneGlbModel("https://zeus-realty-nodejs-git-integrationsv-sarinderv.vercel.app/minihouse.glb");
+        return view;
     }
 }

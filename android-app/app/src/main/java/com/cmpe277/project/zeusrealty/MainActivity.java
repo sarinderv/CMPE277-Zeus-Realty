@@ -42,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     FirebaseAuth mAuth;
     StackProperties selProperties;
+    String notifId;
+
+    public String getNotifId() {
+        return notifId;
+    }
+
+    public void setNotifId(String notifId) {
+        this.notifId = notifId;
+    }
 
     public StackProperties getSelProperties() {
         return selProperties;
@@ -92,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
                         // Log and toast
                         System.out.println(token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                        setNotifId(token);
                     }
                 });
     }
@@ -168,5 +178,11 @@ public class MainActivity extends AppCompatActivity {
         this.selProperties=props;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         navController.navigate(R.id.action_navigation_home_to_navigation_details);
+    }
+
+    public void switchToArFragmentView() {
+        System.out.println("Ar Fragment");
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.action_navigation_map_to_navigation_ar);
     }
 }

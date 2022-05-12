@@ -56,6 +56,8 @@ public class NotificationsFragment extends Fragment {
             }
         });
 
+        System.out.println("---firebase token --  "+((MainActivity)getActivity()).getNotifId());
+
         return root;
     }
 
